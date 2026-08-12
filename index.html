@@ -134,7 +134,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans TC','Mic
 .grade-tbl td.gC{color:#b91c1c;font-weight:800;}
 
 /* ── Mobile ── */
-.hb-btn{display:none;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid #d3d1c7;border-radius:7px;background:#fff;cursor:pointer;color:#1a1a18;font-size:16px;flex-shrink:0;}
+.hb-btn{display:none;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #d3d1c7;border-radius:8px;background:#fff;cursor:pointer;color:#1a1a18;font-size:18px;flex-shrink:0;}
 .sb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:55;}
 .sb-overlay.show{display:block;}
 .sb-close{display:none;}
@@ -144,7 +144,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans TC','Mic
   .sb.open{left:0;}
   .sb-close{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border:none;background:#ebe9e0;border-radius:6px;cursor:pointer;color:#5F5E5A;font-size:14px;margin-left:auto;}
   .topbar{flex-wrap:wrap;padding:.55rem .8rem;row-gap:6px;}
-  .topbar .legend-note{display:none;}
   .tb-bar{width:70px;}
   .mn{padding:.85rem .7rem;}
   .card{padding:.85rem .9rem;border-radius:10px;}
@@ -188,8 +187,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans TC','Mic
       <a class="sb-btn" href="https://fengchia1961.github.io/fcu-news-dashboard/student-share.html" target="_blank" rel="noopener noreferrer">
         <i class="ti ti-heart"></i> 學生愛分享儀表板
       </a>
-      <a class="sb-btn" href="FCU學系網站健檢儀表板.html" target="_blank" rel="noopener noreferrer">
-        <i class="ti ti-history"></i> 舊版健檢儀表板（v5.0）
+      <a class="sb-btn" href="writer.html" target="_blank" rel="noopener noreferrer">
+        <i class="ti ti-pencil"></i> 新聞撰寫小幫手
+      </a>
+      <a class="sb-btn" href="translator.html" target="_blank" rel="noopener noreferrer">
+        <i class="ti ti-language"></i> 新聞/訊息公告英譯小幫手
       </a>
     </div>
   </div>
@@ -206,9 +208,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans TC','Mic
     <span class="tb-bar"><span class="tb-bar-f" id="tb-bar-f" style="width:0%;display:block;"></span></span>
     <span style="margin:0 4px;">｜</span>
     等級分布 <span id="tb-grades">—</span>
-    <span class="legend-note" style="margin-left:auto;font-size:11px;">
-      🟢A級(81–100)良好 &nbsp; 🔵B級(61–80)尚可 &nbsp; 🔴C級(0–60)待改善 &nbsp; ⬜待評估
-    </span>
   </div>
   <div class="mn" id="mn">
     <div class="empty">
@@ -1726,13 +1725,13 @@ const DEPTS = [
     {name:'學生愛分享', url:'https://archschool.fcu.edu.tw/share-list/', notes:'抽查2則皆確實為本院學生(創新設計學士學位學程謝文毅、室內設計學士學位學程游丞疆)，非其他系relay錯置'},
   ]
 },
-{id:'id', college:'建築專業學院', name:'室內設計學士學位學程', url:'https://id.fcu.edu.tw/', eval_date:'2026-08-12（v6.0：首頁全連結掃描建立選單一二層頁面清單，逐頁文字查核；師資頁11位以.a-flip-personal-card__front背景圖長度核對(全數僅151-153字元)；下載首頁1張AI設計工作坊照片實際檢視為真實課堂現場；同時服務「室內設計學士學位學程」與「室內設計進修學士班」兩學制，與archschool.fcu.edu.tw共用建築專業學院師資與三大實驗室）', evaluated:true, overall:66,
-  a1:15,a2:16,a3:6,a4:4,a5:1,a6:2, b1:6,b2:6,b3:3,b4:7,b5:0,
+{id:'id', college:'建築專業學院', name:'室內設計學士學位學程', url:'https://id.fcu.edu.tw/', eval_date:'2026-08-12（v6.0：首頁全連結掃描建立選單一二層頁面清單，逐頁文字查核；下載首頁1張AI設計工作坊照片實際檢視為真實課堂現場；同時服務「室內設計學士學位學程」與「室內設計進修學士班」兩學制，與archschool.fcu.edu.tw共用建築專業學院師資與三大實驗室。**2026-08-12複查修正**：師資頁11位教師照片原以.a-flip-personal-card__front背景圖字串長度(151-153字元)判定為載入失敗，經javascript_exec解析背景圖真實URL並用Image()載入實測naturalWidth/Height，11張全數為752-956px的真實照片(非base64內嵌而是外部S3連結，字串短是URL本身短所致，與smd/經營管理學院同一成因)，判定11/11(100%)真實具名照片到位，b5由0分修正為滿分4分，overall由66修正為70）', evaluated:true, overall:70,
+  a1:15,a2:16,a3:6,a4:4,a5:1,a6:2, b1:6,b2:6,b3:3,b4:7,b5:4,
   priority_issues:[
     '導覽選單完全找不到「招生」入口：最新消息/學習/師生作品/室設師資/獎學金與實習/關於，6個一級選單皆非招生相關，首頁輪播與新聞區塊也無招生按鈕，訪客須自行跳轉至archschool.fcu.edu.tw才能找到招生管道[A5-1]',
-    '師資頁11位教師(含黎淑婷院長、李元榮主任等)全數(100%)僅151-153字元微小佔位圖，無一人有可辨識真實照片；比對archschool.fcu.edu.tw師資頁，同一批人(黎淑婷/李英弘/李元榮/Lorena Alessio/林佳慧/許宜珮/林葳)在該站皆為7-13萬字元的真實base64照片，證實是id站台本身的圖片載入問題，非全院缺照片[B6]',
   ],
   highlights:[
+    '師資頁11位教師(黎淑婷院長、李元榮主任等)全數具備真實照片，以Image()實測naturalWidth/Height確認752-956px真人照，覆蓋率100%[B6]',
     '首頁新聞高度即時且具體：逢甲室設x義大利五校臺義文創永續設計盛典、學生趙辰慈成最年輕LEED GA(具名具體)、與德廚精品廚電及大燁照明具名產學合作、日本飯店實務營',
     '下載首頁「逢甲室設AI應用班」新聞配圖實測確認為真實課堂照片：講師持麥克風授課、學生在電腦前實作、投影片顯示NotebookLM/Gemini Canvas等AI工具課程進度，非圖庫或AI生成圖片[B1,B2]',
     '職涯發展頁具體比較室內設計與建築系/景觀系/土木系三系之差異，避免訪客混淆[A2-2]',
@@ -1747,7 +1746,6 @@ const DEPTS = [
   ],
   quick_fixes:[
     '在首頁或選單新增明確的「招生」入口，直接連結官方recurit_list招生系統',
-    '修復師資頁圖片載入問題，比照archschool.fcu.edu.tw使用相同的真實照片來源',
     '補上首頁meta description',
     '補充3門核心課程的個別詳細介紹',
     '增補具名系友出路案例與年度就業量化數據',
@@ -1759,8 +1757,8 @@ const DEPTS = [
     {name:'學習/職涯發展', url:'https://id.fcu.edu.tw/announcements-detail/', notes:'[A2-2] 具體比較室內設計與建築系/景觀系/土木系三系差異；出路廣泛但無量化數字'},
     {name:'學習/國際移動', url:'https://id.fcu.edu.tw/international/', notes:'[A1-2] 3+1雙聯學位、2025年新洽談義大利名校交流；4項具體海外課程附學分數'},
     {name:'師生作品', url:'https://id.fcu.edu.tw/result/', notes:'列出多件具名作品(藥語綠憩/共鳴之館/Golden Hour/凹凸競研所/樂漁安居望年迴廊/碎香匠坊)及老師作品「福倉埕藝」桃園公設室內設計案、逢甲建築小書屋偏鄉播種計畫-媽厝小書屋(與archschool小書屋案例相互呼應)'},
-    {name:'室設師資/專任教授', url:'https://id.fcu.edu.tw/室設師資-2/', notes:'[B6] 10位教師(黎淑婷/李英弘/李元榮/Lorena Alessio/林佳慧/許宜珮/林葳/林衍良/凃昭伃/呂耀中)，.a-flip-personal-card__front背景圖全數僅151-153字元，判定為圖片載入失敗或未上傳，非archschool同名教師頁面的真實照片'},
-    {name:'室設師資/兼任教授', url:'https://id.fcu.edu.tw/室設師資-3/', notes:'[B6] 僅1位教師，同樣為153字元佔位圖'},
+    {name:'室設師資/專任教授', url:'https://id.fcu.edu.tw/室設師資-2/', notes:'[B6] 10位教師(黎淑婷/李英弘/李元榮/Lorena Alessio/林佳慧/許宜珮/林葳/林衍良/凃昭伃/呂耀中)，背景圖以外部S3連結呈現(非base64內嵌)，用Image()實測naturalWidth/Height確認10張全數為752-956px真實照片[2026-08-12複查修正，原判定誤用base64字串長度heuristic於URL連結圖片]'},
+    {name:'室設師資/兼任教授', url:'https://id.fcu.edu.tw/室設師資-3/', notes:'[B6] 僅1位教師，同樣為外部S3連結，實測760×952px真實照片[2026-08-12複查修正]'},
     {name:'獎學金與實習/實習', url:'https://id.fcu.edu.tw/實習/', notes:'[A1-5] 國內深度實習合作事務所5家(大將作/王銘鴻/打里摺/龍寶建設/國泰建設)、合作廠商4家(欽成營造/鄭銘輝建築師/德廚/上豐系統櫃)，共9家具名企業'},
     {name:'關於', url:'https://id.fcu.edu.tw/events-list/', notes:'[A2-3] 內容與archschool「歡迎」頁共用，黎淑婷院長、李元榮室內設計學程主任具名歡迎詞'},
   ]
@@ -3217,19 +3215,18 @@ const DEPTS = [
     {name:'學習/博士專業(landing頁補查)', url:'https://gche.fcu.edu.tw/博士專業/', notes:'補查landing頁本身：提及「巨鷗科技智慧城鄉獎學金」具名企業贊助獎學金及校級獎助學金，與課程實作/校外參訪/海外移地教學/專題演講4張特色卡片重複連結至先前已查頁面，無新增未查內容'},
   ]
 },
-{id:'smd', college:'經營管理學院', name:'經營管理學院', url:'https://smd.fcu.edu.tw/', eval_date:'2026-08-12（v6.0：首頁全連結掃描建立選單一二層頁面清單逐頁文字查核，含點將錄/博觀講堂/法規守則/EMBA聯誼會等先前遺漏頁面；師資頁29位教師以.a-flip-personal-card__front背景圖長度核對(全數僅146-210字元，遠低於真實照片常見70000+字元)；下載3張首頁輪播圖實際檢視，其中1張為2019年建築專業學院隈研吾講座海報，與本學院無關）', evaluated:true, overall:51,
-  a1:14,a2:12,a3:5,a4:4,a5:3,a6:2, b1:3,b2:1,b3:1,b4:6,b5:0,
+{id:'smd', college:'經營管理學院', name:'經營管理學院', url:'https://smd.fcu.edu.tw/', eval_date:'2026-08-12（v6.0：首頁全連結掃描建立選單一二層頁面清單逐頁文字查核，含點將錄/博觀講堂/法規守則/EMBA聯誼會等先前遺漏頁面；下載3張首頁輪播圖實際檢視，其中1張為2019年建築專業學院隈研吾講座海報，與本學院無關。**2026-08-12使用者回報後複查修正**：師資頁29位教師照片原以.a-flip-personal-card__front背景圖字串長度(146-210字元)判定為佔位圖，經瀏覽器javascript_exec解析背景圖真實URL後發現本站照片以外部S3連結(非base64內嵌)呈現，字串短是URL本身短、與是否為真實照片無關；29個URL全數唯一且檔名對應教師本名(如高承恕.jpeg、黎淑婷.jpg)，並實際開啟其中1張確認為501×631真人照片，判定29/29(100%)皆為真實具名照片，b5由0分修正為滿分4分，overall由51修正為55）', evaluated:true, overall:55,
+  a1:14,a2:12,a3:5,a4:4,a5:3,a6:2, b1:3,b2:1,b3:1,b4:6,b5:4,
   priority_issues:[
-    '師資頁29位教師(含院長林豐智、高承恕等)全數(100%)為極小尺寸佔位圖(背景圖base64長度僅146-210字元)，無一人有可辨識的真實照片，是抽查10個單位中缺漏比例最嚴重的一個[B6]',
     '首頁輪播圖片中發現1張明顯錯置的舊圖：2019/11/25「隈研吾建築專業學院講座」海報與經營管理學院內容完全無關，疑似媒體庫誤用或輪播未更新[B1]',
     '「學習場域」頁(/learnspace/)除麵包屑與標題外完全空白，無任何內文或圖片，與其他學院官網之學習場域介紹形成明顯落差[A1-4]',
   ],
   highlights:[
+    '師資頁29位教師(含院長林豐智、創院者高承恕、跨院師資黎淑婷等)全數具備真實具名照片(以S3外部連結呈現、檔名對應本人姓名，如高承恕.jpeg)，經下載驗證為501×631真人照，覆蓋率100%，是抽查單位中少數師資照片全數到位者[B6]',
     '「點將錄」列出數十位具名校友帶領具名企業獲具名獎項的紀錄(如「105高階管理組謝文旭同學與106高階管理組楊寶鳳同學帶領光昱金屬有限公司獲頒2017年度第二十四屆中小企業創新研究獎」)，橫跨102-111級多個屆別，是抽查10個單位中出路佐證數量最龐大、最具體的一個，加上「名人風雲錄」58位具名畢業校友(姓名/職稱/屆別組別)，A1-5三項要求已充分滿足[A1-5]',
     '「博觀講堂」(Post EMBA)特色師資具名業界領袖：張季明(欣銓科技副董事長)、沈方正(老爺酒店集團執行長)、郭明正(元大金控國際事業處執行長)等，附完整職銜[A1-2]',
     '辦學宗旨頁沿革完整交代91學年度招生至107學年度定名經過，含已停招之「電子商務碩士在職專班」(104學年度停招)，並提出獨創「SCOPAB+」六大元素教學重點框架(低情境:策略定位/成本財務/組織/流程；高情境:藝術/品牌)[A1-2]',
     '5個組別(高階管理/經營管理/文化創意產業管理/數位創新管理/建築產業管理)招生名額具體(30/70/25/25/30名)，各組重點課程逐一列名[A1-3]',
-    '單位新聞最新一則2026.06.07(第二屆全球企業領袖班結業典禮)，距健檢日66天，即時性佳[A4]',
   ],
   pain_points:[
     '找不到院長或主任具名的「歡迎詞」內容，學院簡介下僅有關於EMBA/辦學宗旨/院辦公室/學習場域4頁，無任何一頁包含主管親自具名之當期歡迎文字[A2-3]',
@@ -3238,7 +3235,6 @@ const DEPTS = [
     '下載驗證的3張首頁輪播圖中，僅1張(2026全球企業領袖班DM海報)為本學院當期自製內容，其餘為活動宣傳圖或設計海報，未見任何真實課堂/學生上課/師生互動的實景照片',
   ],
   quick_fixes:[
-    '為29位教師全數補上真實照片',
     '移除或替換首頁輪播中與本學院無關的舊圖(2019建築專業學院隈研吾講座海報)',
     '為「學習場域」頁補上實際內容與場地照片',
     '在組別簡介/報考資格等頁為數創組、文創組加註116學年度起停招提醒',
@@ -3251,7 +3247,7 @@ const DEPTS = [
     {name:'學院簡介/辦學宗旨', url:'https://smd.fcu.edu.tw/purpose/', notes:'[A1-2] 91-107學年度沿革逐年具體，含已停招之電子商務碩士在職專班；獨創SCOPAB+六大元素教學框架，並以IMD洛桑學院自許'},
     {name:'學院簡介/院辦公室', url:'https://smd.fcu.edu.tw/office/', notes:'院長林豐智、副院長李元恕、執行長董正玫、副執行長吳尚和及5位行政人員全數具名，附分機與email'},
     {name:'學院簡介/學習場域', url:'https://smd.fcu.edu.tw/learnspace/', notes:'[A1-4] 頁面除標題外完全空白，經get_page_text與read_page雙重確認'},
-    {name:'師資', url:'https://smd.fcu.edu.tw/teachers/', notes:'[B6] 29位教師(校內/校外/業界師資合併呈現)，含院長林豐智、創院者高承恕、建築專業學院黎淑婷等跨院師資；全數.a-flip-personal-card__front背景圖僅146-210字元，遠低於其他系所常見的真實照70000+字元，判定全數無真實可辨識照片'},
+    {name:'師資', url:'https://smd.fcu.edu.tw/teachers/', notes:'[B6] 29位教師(校內/校外/業界師資合併呈現)，含院長林豐智、創院者高承恕、建築專業學院黎淑婷等跨院師資；背景圖以外部S3連結呈現(非base64內嵌)，29個URL全數唯一且檔名對應教師本名，下載驗證確認為真實照片，判定29/29(100%)真實具名照片到位[2026-08-12使用者回報後修正，原判定誤用base64字串長度heuristic於URL連結圖片]'},
     {name:'課程資訊/組別簡介', url:'https://smd.fcu.edu.tw/組別簡介/', notes:'[A1-3] 5組(經營管理/高階管理/文化創意產業管理/數位創新管理/建築產業管理)各附組別定位說明與3門重點課程名稱，惟無單門課程之詳細白話內容'},
     {name:'招生資訊/報考資格', url:'https://smd.fcu.edu.tw/qualification/', notes:'[A1-3,A5] 5組招收名額具體(高階30/經管70/數創25/文創25/建築30)，同等學力認定7款標準含「吳寶春條款」具體說明'},
     {name:'招生資訊/網路報名', url:'https://smd.fcu.edu.tw/online_registration/', notes:'[A5-1] 完整7步驟報名流程與所需文件清單，為本學院自有EMBA報名系統(非導向www.fcu.edu.tw/apply總覽頁)，判定為專屬正式管道'},
@@ -3263,11 +3259,10 @@ const DEPTS = [
     {name:'學生組織/逢甲大學EMBA聯誼會', url:'https://smd.fcu.edu.tw/逢甲大學emba聯誼會/', notes:'抽查1個學生組織頁：說明「終身學習、一生相隨」宗旨，並列出EMBA九大社團(高爾夫/單車/樂跑/慢壘金鷹/翔鷹羽球/魔力熱舞/攝影美學/飛鷹重機/峰鷹登山)具體名稱，內容真實但深度有限'},
   ]
 },
-{id:'aita', college:'創能學院', name:'人工智慧技術與應用學士學位學程', url:'https://aita.fcu.edu.tw/', eval_date:'2026-08-12（v6.0：首頁全連結掃描建立選單一二層頁面清單逐頁文字查核，含專題演講/學生愛分享補查；師資頁12位以.a-flip-personal-card__front背景圖長度核對；下載1張學生升學故事配圖(Arizona State University校門)實際檢視）', evaluated:true, overall:60,
-  a1:14,a2:14,a3:6,a4:4,a5:3,a6:2, b1:5,b2:3,b3:2,b4:6,b5:1,
+{id:'aita', college:'創能學院', name:'人工智慧技術與應用學士學位學程', url:'https://aita.fcu.edu.tw/', eval_date:'2026-08-12（v6.0：首頁全連結掃描建立選單一二層頁面清單逐頁文字查核，含專題演講/學生愛分享補查；下載1張學生升學故事配圖(Arizona State University校門)實際檢視。**2026-08-12補查修正**：師資頁12位教師原記錄僅2位(17%)有真實照片，複查發現名單已變動(原記錄含郝振宇/林佩蓉，現為王啟宏/廖文如)，現況7位(梁辰睿/王坤卿/周永振/楊朝仲/劉峰旗/王啟宏/陳耀鐘)為58,149-136,245字元真實base64照片，5位(莊永忠/林佩蓉/林子煒/廖文如/郭崇韋)仍為83字元佔位圖，覆蓋率58%(7/12)，判定為師資名單異動+照片持續補齊，非原評分錯誤，b5由1分修正為2分，overall由60修正為61）', evaluated:true, overall:61,
+  a1:14,a2:14,a3:6,a4:4,a5:3,a6:2, b1:5,b2:3,b3:2,b4:6,b5:2,
   priority_issues:[
     '「歡迎」頁完全沒有具名主任或系主任：僅有「歡迎加入AI學程！準備好用AI改變世界了嗎？」等口號式文字，全站找不到任何一位負責人具名歡迎訪客[A2-3]',
-    '師資頁12位教師中僅2位(17%，梁辰睿、劉峰旗等其中2位)有真實照片，其餘10位為83字元微小佔位圖[B6]',
   ],
   highlights:[
     '首頁「AI學程×走向世界」單元刊登2篇具名學生升學故事，成果具體可查證：一位2026年2月獲Imperial College London碩士班錄取，在校期間研究成果發表於SCI期刊《The Visual Computer》，並獲教育部U-start創新創業基金；另一位錄取Arizona State University[A1-2,A1-5]',
@@ -3281,10 +3276,11 @@ const DEPTS = [
     '出路資訊雖有具名學生升學案例，但缺乏整體畢業生就業/升學量化數字(僅個案，非統計資料)',
     '首頁meta description與og:image皆空值[A6-2]',
     '受限時間僅下載驗證1張學生故事配圖(為ASU校園地標照，非本學程自製教學/實作照片)，B1-B4多數圖片真實性與教學情境呈現程度待後續人工複核',
+    '師資頁12位教師仍有5位(莊永忠/林佩蓉/林子煒/廖文如/郭崇韋，42%)缺乏真實照片，覆蓋率58%尚未達標[B6]',
   ],
   quick_fixes:[
     '增補系主任或學程負責人具名歡迎詞',
-    '為10位缺照片教師補齊真實照片',
+    '為剩餘5位缺照片教師(莊永忠/林佩蓉/林子煒/廖文如/郭崇韋)補齊真實照片',
     '在課程配當表旁補充3門代表性核心課程的白話說明',
     '首頁補上meta description',
     '補充畢業生就業/升學整體量化數字(如民國114學年度就業率、升學率)',
@@ -3294,7 +3290,7 @@ const DEPTS = [
     {name:'關於/綜覽', url:'https://aita.fcu.edu.tw/overview/', notes:'[A1-5,A5-2] 引用Google Cloud Japan人才分類框架(AI Strategist/AI Practitioner)說明培育目標；未來出路提及可銜接aitm碩士班或申請國內外資工電機資管及海外AI/CS碩士；聯絡資訊完整'},
     {name:'關於/歡迎', url:'https://aita.fcu.edu.tw/welcome/', notes:'[A2-3] 全文為行銷口號式文字("開啟你的AI冒險"等)，無任何具名主任/教師署名'},
     {name:'招生', url:'https://aita.fcu.edu.tw/recruit/', notes:'[A5-1] 6管道(大學繁星推薦/申請入學/分發入學/身心障礙甄試/暑假轉學/寒假轉學)複查全部連至www.fcu.edu.tw/recurit_list/官方頁面；另有ColleGo!、申請入學重點準備指引、新生專區等資源連結'},
-    {name:'師資', url:'https://aita.fcu.edu.tw/teachers/', notes:'[B6] 抽查頁1共12位教師：梁辰睿(83字元佔位)、莊永忠(佔位)、王坤卿(佔位)、林佩蓉(佔位)、劉峰旗(佔位)、林子煒(佔位)、周永振(136245字元真實照)、楊朝仲(佔位)、葉守禮(佔位)、郭崇韋(佔位)、陳耀鐘(佔位)、曾智義(111885字元真實照)，僅2/12(17%)有真實照片'},
+    {name:'師資', url:'https://aita.fcu.edu.tw/teachers/', notes:'[B6] 2026-08-12複查頁1共12位教師(名單較評分當下已異動，原記錄含郝振宇/葉守禮/曾智義，現況為)：梁辰睿(58149字元真實照)、王坤卿(65961真實照)、莊永忠(83佔位)、周永振(136245真實照)、楊朝仲(101521真實照)、劉峰旗(82353真實照)、林佩蓉(83佔位)、林子煒(83佔位)、王啟宏(66357真實照)、廖文如(83佔位)、陳耀鐘(125553真實照)、郭崇韋(83佔位)，7/12(58%)有真實照片'},
     {name:'新聞與活動/校園新聞(單位新聞)', url:'https://aita.fcu.edu.tw/news/', notes:'[A4] 切換至單位新聞分頁共7-8頁自建內容，最新為榮譽獲獎類(明緯科技競賽/ERP研討會論文獎/旺宏金矽獎/程式創意挑戰賽)，即時性極佳；預設「逢甲精選」分頁則為全校性新聞(工科院半導體獎等)'},
     {name:'研修', url:'https://aita.fcu.edu.tw/cincinnati_dual_degree/', notes:'美國辛辛那提大學雙聯學位、逢甲x美光記憶體生產製造人才培育微學程(具外部github頁面)、台積電半導體學程，具名產學合作豐富'},
     {name:'新聞與活動/專題演講', url:'https://aita.fcu.edu.tw/speech/', notes:'補查：僅1場演講紀錄「從被動到主動－如何用AI翻轉桶裝瓦斯產業生態」(2026/04/29科航203)，無講者姓名，內容單薄'},
@@ -3305,11 +3301,11 @@ const DEPTS = [
     {name:'新聞與活動/校園活動', url:'https://aita.fcu.edu.tw/events-list/', notes:'補查：全數為創能學院或全校性活動(世界經濟論壇課程/NVIDIA DLI工作坊/先進光學半導體論壇)，與aitm完全相同內容，非本學程專屬活動'},
   ]
 },
-{id:'aitm', college:'創能學院', name:'人工智慧科技與管理碩士學位學程', url:'https://aitm.fcu.edu.tw/', eval_date:'2026-08-12（v6.0：首頁全連結掃描建立選單一二層頁面清單逐頁文字查核，含綜覽/招生/師資/研修/新聞/學生愛分享/場域資源(ischool.fcu.edu.tw)全部頁面；師資頁12位以.a-flip-personal-card__front背景圖長度核對；115學年度起始招生之新學程，與aita共用創能學院辦公室、聯絡方式、部分師資及新聞源）', evaluated:true, overall:55,
-  a1:15,a2:13,a3:4,a4:4,a5:3,a6:2, b1:5,b2:2,b3:1,b4:5,b5:1,
+{id:'aitm', college:'創能學院', name:'人工智慧科技與管理碩士學位學程', url:'https://aitm.fcu.edu.tw/', eval_date:'2026-08-12（v6.0：首頁全連結掃描建立選單一二層頁面清單逐頁文字查核，含綜覽/招生/師資/研修/新聞/學生愛分享/場域資源(ischool.fcu.edu.tw)全部頁面；115學年度起始招生之新學程，與aita共用創能學院辦公室、聯絡方式、部分師資及新聞源。**2026-08-12補查修正**：師資頁12位教師原記錄僅2位(17%，魏國彥/程代勒)有真實照片，複查發現名單較評分當下已異動(原記錄含郝振宇/林佩蓉，現為劉峰旗/林子煒)，現況6位(梁賡義/馬維英/魏國彥/程代勒/王坤卿/林子煒)為29,341-135,701字元真實base64照片，6位(佘日新/梁辰睿/莊永忠/何晉瑋/周永振/劉峰旗)仍為83字元佔位圖，覆蓋率50%(6/12)，b5由1分修正為2分，overall由55修正為56）', evaluated:true, overall:56,
+  a1:15,a2:13,a3:4,a4:4,a5:3,a6:2, b1:5,b2:2,b3:1,b4:5,b5:2,
   priority_issues:[
     '找不到具名主任或負責人歡迎詞：選單「關於」下僅有「綜覽」一頁，無獨立「歡迎」頁面，全站無任何一位負責人具名歡迎訪客(僅研修頁的雙聯學位輔導老師欄位具名梁辰睿，非歡迎詞)[A2-3]',
-    '師資頁12位教師中僅2位(17%，魏國彥、程代勒)有真實照片，其餘10位(含業界大師)為83字元微小佔位圖[B6]',
+    '師資頁12位教師中僅6位(50%)有真實照片，其餘6位(佘日新/梁辰睿/莊永忠/何晉瑋/周永振/劉峰旗，含業界大師)為83字元微小佔位圖[B6]',
   ],
   highlights:[
     '業界大師陣容含金量極高且具名具體：謝明傑(華碩電腦營運長暨全球資深副總裁)、楊光磊(台積電前研發處長，主導0.18微米至65奈米製程開發)、李維斌(鴻海研究院執行長兼資安所所長暨集團資安長)，三位皆附完整經歷說明[A1-2]',
@@ -3326,7 +3322,7 @@ const DEPTS = [
   ],
   quick_fixes:[
     '增補學程負責人具名歡迎詞',
-    '為10位缺照片教師(含3位業界大師)補齊真實照片',
+    '為剩餘6位缺照片教師(佘日新/梁辰睿/莊永忠/何晉瑋/周永振/劉峰旗)補齊真實照片',
     '首頁補上meta description',
     '待第一屆學生畢業後補充具名系友案例與就業量化數據',
   ],
@@ -3334,7 +3330,7 @@ const DEPTS = [
     {name:'首頁', url:'https://aitm.fcu.edu.tw/', notes:'[A1-2,A6-2] meta description空值；業界大師3位具名(謝明傑/楊光磊/李維斌)附完整經歷；課程地圖4大類別(共同核心/技術應用組/策略管理組/終端專題)說明清楚；聯絡資訊與aita共用(aita@fcu.edu.tw)'},
     {name:'關於/綜覽', url:'https://aitm.fcu.edu.tw/overview/', notes:'[A1-5] 「未來出路」段落具體列出5類職務(AI工程師/資料科學家/AI產品規劃師/數位策略顧問/智慧製造工程師)及跨足公部門/跨國企業/新創/教研機構等方向，惟無量化數字或具名系友案例'},
     {name:'招生', url:'https://aitm.fcu.edu.tw/recruit/', notes:'[A5-1] 碩士班甄試入學/碩士班考試入學2管道複查皆連至www.fcu.edu.tw/recurit_list/mastr_interview與mastr_exam官方頁面'},
-    {name:'師資', url:'https://aitm.fcu.edu.tw/teachers/', notes:'[B6] 抽查頁1共12位：馬維英(83字元佔位)、梁賡義(佔位)、魏國彥(29341字元真實照)、程代勒(135701字元真實照)、佘日新(佔位)、梁辰睿(佔位)、莊永忠(佔位)、王坤卿(佔位)、何晉瑋(佔位)、郝振宇(佔位)、周永振(佔位)、林佩蓉(佔位)，僅2/12(17%)真實照，與aita師資頁部分重疊(梁辰睿/莊永忠/王坤卿/周永振/林佩蓉皆同樣缺照片)'},
+    {name:'師資', url:'https://aitm.fcu.edu.tw/teachers/', notes:'[B6] 2026-08-12複查頁1共12位(名單較評分當下已異動，原記錄含郝振宇/林佩蓉，現況為)：梁賡義(54037字元真實照)、馬維英(63313真實照)、佘日新(83佔位)、魏國彥(29341真實照)、程代勒(135701真實照)、梁辰睿(83佔位)、王坤卿(65961真實照)、莊永忠(83佔位)、何晉瑋(83佔位)、周永振(83佔位)、劉峰旗(83佔位)、林子煒(130117真實照)，6/12(50%)真實照，與aita師資頁部分重疊(梁辰睿/莊永忠/周永振/劉峰旗皆同樣缺照片)'},
     {name:'新聞與活動/校園新聞(單位新聞)', url:'https://aitm.fcu.edu.tw/news/', notes:'[A4] 與aita.fcu.edu.tw完全相同的單位新聞內容(旺宏金矽獎/明緯科技競賽/ERP研討會論文獎等)，共用創能學院新聞源，最新距健檢日在90天內'},
     {name:'新聞與活動/學生愛分享', url:'https://aitm.fcu.edu.tw/share-list/', notes:'首頁區塊3則中1則(人工智慧技術與應用學士學位學程王富貴，國科會大專生研究計畫具體數字4.8萬元)屬姊妹學程，另2則(光電系廖軒挺/自控系陳畊甫)非本學程relay，依規則不扣分'},
     {name:'學習/場域資源', url:'https://ischool.fcu.edu.tw/learning_map/', notes:'[A1-4] 創能學院共用6大場域：AIoT(資訊電機學院)、RoSoCoop數位製造合作社(建築專業學院)、金融創新(金融學院)、商業創新(商學院)、工業人工智慧(工程與科學學院)、智慧城市(建設學院)，皆具體命名並說明發展重點'},
@@ -3343,14 +3339,14 @@ const DEPTS = [
     {name:'新聞與活動/校園活動', url:'https://aitm.fcu.edu.tw/events-list/', notes:'補查：全數為創能學院或全校性活動(世界經濟論壇課程/NVIDIA DLI工作坊/先進光學半導體論壇)，非aitm專屬活動'},
   ]
 },
-{id:'istm', college:'國際科技與管理學院', name:'國際科技與管理學院', url:'https://istm.fcu.edu.tw/', eval_date:'2026-08-12（v6.0：首頁全連結掃描建立選單一二層頁面清單逐頁文字查核，含全部9個2+2國際專班個別頁面(uq/purdueprogram/sfsu/uqee/unswds/monashprogram/rmitprogram/sjsuba/sjsuee)、學院團隊、獎助學金、學院公告、Q&A、學院生活(TA時間/學生成就中心)；師資頁12位以.a-flip-personal-card__front背景圖長度核對；招生頁2個核心管道連結實測皆404，已用瀏覽器直接開啟確認）', evaluated:true, overall:59,
+{id:'istm', college:'國際科技與管理學院', name:'國際科技與管理學院', url:'https://istm.fcu.edu.tw/', eval_date:'2026-08-12（v6.0：首頁全連結掃描建立選單一二層頁面清單逐頁文字查核，含全部9個2+2國際專班個別頁面(uq/purdueprogram/sfsu/uqee/unswds/monashprogram/rmitprogram/sjsuba/sjsuee)、學院團隊、獎助學金、學院公告、Q&A、學院生活(TA時間/學生成就中心)；招生頁2個核心管道連結實測皆404，已用瀏覽器直接開啟確認。**2026-08-12補查修正**：師資頁12位教師原記錄僅1位(林傑森)有真實照片，複查時同一批12人(姓名與順序完全相同，非人員異動)背景圖長度為25,861-125,301字元，全數為base64真實照片，判定該校在評分後持續補齊了先前缺漏的11位教師照片，b5由0分修正為滿分4分，overall由59修正為63）', evaluated:true, overall:63,
   a1:16,a2:16,a3:8,a4:4,a5:1,a6:1,
-  b1:5,b2:2,b3:1,b4:5,b5:0,
+  b1:5,b2:2,b3:1,b4:5,b5:4,
   priority_issues:[
     '招生頁「大學個人申請入學」(www.fcu.edu.tw/national_list/114college_apply/)與「大學繁星推薦」(.../114college-star/)2個本國生核心管道連結，實際開啟皆為404「We are sorry！請原諒我們的失誤」，判定為使用去年(114學年度)已下架的舊網址[A5-1,A6-1]',
-    '師資頁12位教師中僅1位(8%，林傑森)有真實照片，其餘11位為83字元微小佔位圖，是抽查10個單位中比例最低者之一[B6]',
   ],
   highlights:[
+    '師資頁12位教師(梁辰睿/季廷恩/劉恩廷/Simon Richards/牟德明/許佳璵/林中一/黃秋煌/Michael paul Kidd/安大衛/余瑞琳/林傑森)全數具備真實base64照片(25,861-125,301字元)，覆蓋率100%，較評分當下的1/12大幅補齊[2026-08-12複查][B6]',
     '9個2+2國際雙聯學位專班個別頁面(全數查核完畢)內容一致扎實：均附具體GPA/托福雅思門檻、課程介紹、教學法(CDIO/PBL/Project-based learning)、OPT+STEM或PSW簽證延伸細節；UQ頁提及25萬校友含諾貝爾獎得主，UNSW頁列2026 QS世界排名#20，Purdue頁引用美國勞工部薪資數據[A1-2,A1-3]',
     '學院公告揭露「114-2在學獎學金與Dean\'s List獲獎名單」10名學生具體受獎(每人NT$5,000)並列學程/年級/學號；獎助學金頁另有112年江鎧宇、113年李心月具名得獎感言(曾明哲院長紀念獎助學金NT$22,000)；出路資訊三項至此已充分滿足[A1-5]',
     '學院團隊頁完整揭露院長邱創乾(美國密西根州立大學電機工程博士)、2位副院長、執行長鐘耀隆(同時具名學生成就中心主任)、副主任、院秘書共6人具名具email，另有9個專班各自指導教授具名[A2-3佐證]',
@@ -3359,12 +3355,10 @@ const DEPTS = [
   ],
   pain_points:[
     '找不到本學院專屬學習場域或實驗室介紹頁[A1-4]',
-    '師資頁11位教師(91.7%)缺乏真實照片',
     '受限時間僅完成技術性師資照片檢測與連結狀態驗證，9個專班頁面與學院團隊頁之圖片真實性待後續人工複核',
   ],
   quick_fixes:[
     '修正招生頁「大學個人申請入學」「大學繁星推薦」2個404連結，改用當年度有效的recurit_list網址',
-    '為11位缺照片教師補齊真實照片',
     '補充學院整體畢業生量化去向統計數字',
     '增補學院專屬學習場域或設施介紹',
   ],
@@ -3377,7 +3371,7 @@ const DEPTS = [
     {name:'2+2國際專班/美國舊金山州立大學資訊工程', url:'https://istm.fcu.edu.tw/sfsu/', notes:'[A1-2,A1-3] 全校近1/3教師投入AI與類神經網路發展、畢業生多數進入柏克萊/史丹佛；CDIO與Problem-based Learning教學模式；GPA3.0+60學分+托福80/雅思6.0'},
     {name:'關於/獎助學金', url:'https://istm.fcu.edu.tw/scholarship/', notes:'[A1-5] 曾明哲院長紀念獎助學金(NTD22,000)具名得主112年江鎧宇、113年李心月附得獎感言原文；鷹揚獎助學金NTD120,000/60,000元；另有學海飛颺獎學金'},
     {name:'招生', url:'https://istm.fcu.edu.tw/recruit/', notes:'[A5-1,A6-1,A6-2] meta description/og:image已填寫；「大學個人申請入學」與「大學繁星推薦」連結實測皆404(www.fcu.edu.tw/national_list/114college_apply與114college-star)；境外學生/僑生港澳生/大陸地區學生3管道連結正常'},
-    {name:'師資', url:'https://istm.fcu.edu.tw/teachers_ch/', notes:'[B6] 抽查頁1共12位：梁辰睿/季廷恩/劉恩廷/Simon Richards/牟德明/許佳璵/林中一/黃秋煌/Michael paul Kidd/安大衛/余瑞琳皆83字元佔位圖，僅林傑森(100045字元)為真實照，1/12(8%)'},
+    {name:'師資', url:'https://istm.fcu.edu.tw/teachers_ch/', notes:'[B6] 抽查頁1共12位：梁辰睿/季廷恩/劉恩廷/Simon Richards/牟德明/許佳璵/林中一/黃秋煌/Michael paul Kidd/安大衛/余瑞琳/林傑森，2026-08-12複查全數為25,861-125,301字元真實base64照片，12/12(100%)[較評分當下的1/12大幅補齊，人員名單與順序完全相同]'},
     {name:'新聞與活動/學院新聞(單位新聞)', url:'https://istm.fcu.edu.tw/news/', notes:'[A4] 最新2026.05.22(UNSW教授Stephen Goddard來訪率師生赴台北新一代設計展)、2026.04.21(U-Impact競賽銀獎)、2026.03.23(UQ INFO DAY)，皆具名具體之國際交流內容'},
     {name:'2+2國際專班/澳洲昆士蘭大學電機工程', url:'https://istm.fcu.edu.tw/uqee/', notes:'銜接UQ Faculty of Engineering，PSW簽證可留澳2-4年；專題式學習(Project-based Learning)'},
     {name:'2+2國際專班/澳洲新南威爾斯大學設計', url:'https://istm.fcu.edu.tw/unswds/', notes:'2026 QS世界排名#20；銜接UNSW整合設計(Integrated Design)學位，大三大四從7個Disciplinary Studio(物件/體驗/圖形/互動/織品/時尚/3D視覺化)選2個修習'},
