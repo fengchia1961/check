@@ -175,6 +175,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans TC','Mic
 .di.nav-item:hover{background:#EEEDFE;border-color:#AFA9EC;}
 .di.nav-item.act{background:#fff;color:#C8102E;border-color:#C8102E;font-weight:700;}
 .di.nav-item i{font-size:15px;}
+.sb-nav .di.nav-item+.di.nav-item{margin-top:5px;}
+a.di.nav-item{text-decoration:none;color:#5F5E5A;}
+a.di.nav-item:hover{color:#1a1a18;}
+a.di.nav-item .nav-ext{font-size:12px;color:#B4B2A9;flex-shrink:0;}
 .adm-chips{display:flex;flex-wrap:wrap;gap:8px;}
 .adm-chip{background:#f7f6f1;border:1px solid #e5e4dc;border-radius:9px;padding:8px 12px;min-width:104px;}
 .adm-chip .k{font-size:11px;color:#888780;font-weight:700;display:block;}
@@ -3567,6 +3571,11 @@ function admitNav(body){
   el.innerHTML = '<i class="ti ti-school"></i><div class="di-n">' + esc(ADMIT_115.year) + '學年度招生系所一覽表</div>';
   el.onclick = selectAdmit;
   wrap.appendChild(el);
+  const lk = document.createElement('a');
+  lk.className = 'di nav-item';
+  lk.href = 'admission-link-check.html';
+  lk.innerHTML = '<i class="ti ti-link"></i><div class="di-n">招生連結健檢報告</div><i class="ti ti-external-link nav-ext"></i>';
+  wrap.appendChild(lk);
   body.appendChild(wrap);
 }
 /* ==ADMIT_JS_END== */
